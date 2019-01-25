@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Clojure</title>
+
+<meta name="description" content="Clojure">
+
+  <meta name="author" content="<strong>UNLEASH THE POWER WITHIN</strong></br>(11 years and counting, a tribute)" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="../reveal.js/plugin/toc-progress/toc-progress.css">
+<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="../reveal.js/css/theme/beige.css" id="theme">
+
+
+<!-- For syntax highlighting -->
+  <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+  document.write( '<link rel="stylesheet" href="../reveal.js/css/print/' +
+    ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) +
+    '.css" type="text/css" media="print">' );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<section>
+<h1>Clojure</h1>
+<h3><strong>UNLEASH THE POWER WITHIN</strong></br>(11 years and counting, a tribute)</h3>
+<p>
+<h4>fby.by 2019 - Мінск, Беларусь</h4>
+</p>
+</section>
+
+
+<section id="about-reborg" class="level1">
+<h1>About <span class="citation" data-cites="reborg">@reborg</span></h1>
+<ul>
+<li>Dev at <a href="http://droit.tech" class="uri">http://droit.tech</a></li>
+<li>We’re hiring! (Please ask)</li>
+<li>Organiser of <a href="https://www.meetup.com/Papers-We-Love-London/">Papers We Love London</a></li>
+<li><a href="https://www.youtube.com/channel/UCH0CkLvbv6yEyrUnw9qujpQ">Clojure Pills</a> screencast on YouTube</li>
+<li><a href="http://github.com/reborg/parallel">Parallel lib</a> for Clojure</li>
+</ul>
+</section>
+<section id="oh-and-writing-a-book" class="level1">
+<h1>…oh, and writing a book!</h1>
+<p><img src="../resources/Borgatti-MEAP-small.jpg" /></p>
+<ul>
+<li><a href="www.manning.com/books/clojure-the-essential-reference">Clojure: The Essential Reference</a> by Manning</li>
+<li>800+ pages, 1500+ man/hours, 3 years effort.</li>
+<li><strong>Get 42% discount</strong> with “ssborgatti”!</li>
+<li>Early Access. Writing last chapter.</li>
+</ul>
+</section>
+<section id="we-know-the-basics-already" class="level1">
+<h1>We know the basics already</h1>
+<ul>
+<li>It’s a Lisp! It’s functional!</li>
+<li>First class persistent data structures</li>
+<li>Great JVM interoperability</li>
+<li>Concurrent and generally fast</li>
+<li>REPL, macros and much more…</li>
+</ul>
+</section>
+<section id="reflecting-on-11-years-of-clojure" class="level1">
+<h1>Reflecting on 11 years of Clojure</h1>
+<ul>
+<li>Innovation, impact, expressiveness…</li>
+<li>What was Clojure able to achieve and why?</li>
+<li>The list is long (and subjective)</li>
+<li>Hang tight! We are going to cover a lot.</li>
+</ul>
+</section>
+<section id="a-word-about-the-examplesdemo" class="level1">
+<h1>A word about the examples/demo</h1>
+<ul>
+<li>I’m mainly searching for the principles</li>
+<li>Code shown could be about initial sketches</li>
+<li>For any serious development go to latest!</li>
+<li>Let’s get started</li>
+</ul>
+</section>
+<section id="origins." class="level1">
+<h1>2008-2010: Origins.</h1>
+<ul>
+<li><a href="https://groups.google.com/d/msg/clojure/RIhlJU-b0pM/RDXh7NNfRP4J">Compojure</a> (2008) and <a href="https://groups.google.com/d/msg/clojure/u8n9RTZn2VM/TmOJst9t-p8J">Ring</a> (2009)</li>
+<li><a href="https://groups.google.com/d/msg/clojure/gBoCUXq37fM/841iHii--2IJ">Leininghen</a> (2009)</li>
+<li><a href="https://groups.google.com/d/msg/clojure/mLZoEY7Y00M/7RhlU_SkSagJ">Cascalog</a> (2010)</li>
+<li>-&gt; <a href="https://groups.google.com/d/msg/clojure/CbgvzLWCikk/EtjCvMeMvlIJ">Core.Logic</a> (2010)</li>
+</ul>
+</section>
+<section id="compojure" class="level1">
+<h1>Compojure</h1>
+<pre class="clojure"><code>(defroutes app
+  (GET &quot;/:x/:y&quot;
+       [x y :&lt;&lt; #(Integer/parseInt %)]
+    &quot;&lt;h1&gt;Hello World&lt;/h1&gt;&quot;)
+  (route/not-found
+    &quot;&lt;h1&gt;Page not found&lt;/h1&gt;&quot;))</code></pre>
+</section>
+<section id="leiningen" class="level1">
+<h1>Leiningen</h1>
+<pre class="clojure"><code>(defproject clojure-unleash-power-within-talk &quot;0.1.0-SNAPSHOT&quot;
+  :description &quot;Slides and examples.&quot;
+  :url &quot;github.com/reborg/clojure-unleash-power-within-talk&quot;
+  :license {:name &quot;Eclipse Public License&quot;
+            :url &quot;http://www.eclipse.org/legal/epl-v10.html&quot;}
+  :jvm-opts [&quot;-Xmx1g&quot; &quot;-server&quot;]
+  :dependencies [[org.clojure/clojure &quot;1.10.0&quot;]
+                 [org.clojure/core.async &quot;0.4.490&quot;]
+                 [org.clojure/core.logic &quot;0.8.11&quot;]
+                 [criterium &quot;0.4.4&quot;]])</code></pre>
+</section>
+<section id="cascalog" class="level1">
+<h1>Cascalog</h1>
+<pre class="clojure"><code>(?&lt;- (stdout)
+     [?word ?count]
+     (sentence ?line)
+     (tokenise ?line :&gt; ?word)
+     (c/count ?count))</code></pre>
+</section>
+<section id="core.logic" class="level1">
+<h1>Core.Logic</h1>
+<ul>
+<li>Logic programming implementation (miniKanren)</li>
+<li>Express programs in terms of “relations”</li>
+<li>Prolog-like approach to problem solving</li>
+<li>A tree walk of substitution chains</li>
+</ul>
+</section>
+<section id="core.logic-demo" class="level1">
+<h1>Core.Logic Demo</h1>
+<ul>
+<li>Start REPL</li>
+<li>Open <code>src/corelogic.clj</code></li>
+<li>Evaluate snippets on the fly</li>
+<li>Bonus: <code>src/sudoku.clj</code></li>
+</ul>
+</section>
+<section id="core.logic-resources" class="level1">
+<h1>Core.Logic Resources</h1>
+<ul>
+<li><a href="http://minikanren.org">Mini Kanren</a></li>
+<li><a href="https://github.com/clojure/core.logic/wiki/A-Core.logic-Primer">Core.Logic Tutorial</a></li>
+<li><a href="https://github.com/clojure/core.logic/blob/6584ca6323a5e52758ff3d162b93d01050eb9f44/src/logic_fun/fast.clj">Logos Early Sketches</a></li>
+</ul>
+</section>
+<section id="the-fun-begins." class="level1">
+<h1>2011: The fun begins.</h1>
+<ul>
+<li><a href="https://groups.google.com/d/msg/clojure/57vhbdeHrqk/tfLyKJIJrHcJ">Midje</a></li>
+<li><a href="https://groups.google.com/d/msg/clojure/G5syTJHhG1I/a7-S6iH8oN4J">Storm</a></li>
+<li><a href="https://github.com/pallet/pallet">Pallet</a></li>
+<li>-&gt; <a href="https://www.youtube.com/watch?v=tVooR-dF_Ag">ClojureScript</a></li>
+</ul>
+</section>
+<section id="midje" class="level1">
+<h1>Midje</h1>
+<pre class="clojure"><code>(facts &quot;about migration&quot;
+  (fact &quot;Migration produces a new left and right map&quot;
+    (migrate {:a 1} :a {})
+    =&gt; {:new-left {} :clashes #{} :new-right {:a 1}})
+  (fact &quot;multiple keys can be moved at once&quot;
+    (migrate {:a 1, :b 2} :a :b {})
+    =&gt; {:new-left {} :clashes #{} :new-right {:a 1 :b 2}}))</code></pre>
+</section>
+<section id="storm" class="level1">
+<h1>Storm</h1>
+<pre class="clojure"><code>(topology
+ {&quot;1&quot; (spout-spec sentence-spout)
+  &quot;2&quot; (spout-spec (sentence-spout-parameterized
+                   [&quot;the cat jumped over the door&quot;
+                    &quot;greetings from a faraway land&quot;])
+                   :p 2)}
+ {&quot;3&quot; (bolt-spec {&quot;1&quot; :shuffle &quot;2&quot; :shuffle}
+                 split-sentence
+                 :p 5)
+  &quot;4&quot; (bolt-spec {&quot;3&quot; [&quot;word&quot;]}
+                 word-count
+                 :p 6)})</code></pre>
+</section>
+<section id="pallet" class="level1">
+<h1>Pallet</h1>
+<pre class="clojure"><code>(defn tomcat-deploy
+  &quot;Tomcat deploy as ROOT application&quot;
+  [request path]
+  (-&gt; request
+      (tomcat/settings {})
+      (tomcat/deploy &quot;ROOT&quot; :local-file path :clear-existing true)))
+
+(defn haproxy
+  &quot;haproxy server with app1 on port 80.&quot;
+  [request]
+  (-&gt; request
+      (haproxy/install-package)
+      (haproxy/configure
+       :listen {:app1 {:server-address &quot;0.0.0.0:80&quot;
+                       :balance &quot;roundrobin&quot;}})))</code></pre>
+</section>
+<section id="clojurescript-12" class="level1">
+<h1>ClojureScript 1/2</h1>
+<ul>
+<li>Initial concept late 2008</li>
+<li>Officially reworked in 2011</li>
+<li>A Clojure to JavaScript compiler</li>
+<li>Core functionality in ~350 LOC</li>
+</ul>
+</section>
+<section id="clojurescript-22" class="level1">
+<h1>ClojureScript 2/2</h1>
+<ul>
+<li>Standard parse-analyze-emit recursion</li>
+<li>The AST is Clojure data structures</li>
+<li>Heavy use of Clojure polymorphism</li>
+<li>The language becomes the DSL!</li>
+</ul>
+</section>
+<section id="clojurescript-demo" class="level1">
+<h1>ClojureScript Demo</h1>
+<ul>
+<li>Open up REPL</li>
+<li><code>(load-file &quot;src/clojurescript.clj&quot;)</code></li>
+<li>Follow examples at the bottom.</li>
+</ul>
+</section>
+<section id="clojurescript-resources" class="level1">
+<h1>ClojureScript Resources</h1>
+<ul>
+<li><a href="https://github.com/clojure/clojurescript/blob/515900f9762102987bda7d53b919dafc0b6c0580/cljs.org">Rationale and Design</a></li>
+<li><a href="https://github.com/clojure/clojurescript/blob/515900f9762102987bda7d53b919dafc0b6c0580/src/clj/clojure/cljs.clj">Initial Implementation</a></li>
+<li><a href="https://clojurescript.org">Main Website</a></li>
+<li><a href="https://www.youtube.com/watch?v=tVooR-dF_Ag">ClojureScript Release Presentation</a></li>
+</ul>
+</section>
+<section id="going-enterprise." class="level1">
+<h1>2012: Going enterprise.</h1>
+<ul>
+<li><a href="https://github.com/clojure/core.typed">Core.Typed</a></li>
+<li><a href="https://groups.google.com/d/msg/clojure/aRUEIlAHguU/35WX-ns-LkAJ">EDN</a></li>
+<li><a href="https://groups.google.com/d/msg/clojure/EJ9hOZ8yaos/edhhczUjzNwJ">Reducers</a></li>
+<li>-&gt; <a href="http://blog.datomic.com/2012/10/codeq.html">Codeq</a></li>
+<li>-&gt; <a href="https://groups.google.com/d/msg/clojure/y_33dMclUu4/b1magLvfFuMJ">Datomic</a></li>
+</ul>
+</section>
+<section id="core.typed" class="level1">
+<h1>Core.Typed</h1>
+<p><img src="media/coretyped.gif" /></p>
+</section>
+<section id="extensible-data-notation" class="level1">
+<h1>Extensible Data Notation</h1>
+<ul>
+<li>JS: https://github.com/shaunxcode/jsedn</li>
+<li>Go: https://github.com/go-edn/edn</li>
+<li>C++: https://github.com/shaunxcode/edn-cpp</li>
+<li>Haskell: http://hackage.haskell.org/package/hedn</li>
+<li>Scala: https://github.com/martintrojer/edn-scala</li>
+<li>….</li>
+</ul>
+</section>
+<section id="reducers" class="level1">
+<h1>Reducers</h1>
+<pre class="clojure"><code>(defn count-occurrences [words]
+  (r/fold
+    (r/monoid #(merge-with + %1 %2) (constantly {}))
+    (fn [m [k cnt]] (assoc m k (+ cnt (get m k 0))))
+    (r/map #(vector % 1) words)))
+
+(defn word-count [s] (count-occurrences (s/split s #&quot;\s+&quot;)))
+(def war-and-peace &quot;http://www.gutenberg.org/files/2600/2600-0.txt&quot;)
+(def book (slurp war-and-peace))
+(def freqs (word-count book))
+(freqs &quot;Andrew&quot;)</code></pre>
+</section>
+<section id="datomic" class="level1">
+<h1>Datomic</h1>
+<ul>
+<li>Distributed, transactional, time-aware DB</li>
+<li>Database as immutable “value”</li>
+<li>Datalog query interface</li>
+<li>RDF inspired relations</li>
+<li>Efficient B-Tree implementation</li>
+</ul>
+</section>
+<section id="codeq" class="level1">
+<h1>Codeq</h1>
+<ul>
+<li>Semantic analysis of source code</li>
+<li>Functional definitions as unit of change</li>
+<li>Based on Datomic</li>
+</ul>
+</section>
+<section id="datomic-demo" class="level1">
+<h1>Datomic Demo</h1>
+<ul>
+<li>Run <code>src/datomic.sh</code> (done)</li>
+<li>Open up browser at http://localhost:9256/browse</li>
+<li>Open <code>src/datomic.clj</code></li>
+</ul>
+</section>
+<section id="annus-mirabilis" class="level1">
+<h1>2013: Annus Mirabilis</h1>
+<ul>
+<li><a href="https://www.chris-granger.com/2012/06/24/its-playtime/">LightTable</a></li>
+<li><a href="https://groups.google.com/d/msg/clojure/cC1yC9zrS1s/W0ducjm0uQYJ">CinC</a></li>
+<li><a href="https://groups.google.com/d/msg/clojure/4wFYpXRGbqw/6GQ7xVuXO20J">Om</a></li>
+<li><a href="https://github.com/stuartsierra/component/commit/ab02501ab1d750906f1331d8b8ff7a3c5e2d3ce6">Components</a></li>
+<li>-&gt; <a href="https://github.com/clojure/core.async/commit/3ed968b132a2dacd76dcb0f2744eff48fcce58e4">Core.Async</a></li>
+</ul>
+</section>
+<section id="lighttable" class="level1">
+<h1>LightTable</h1>
+<p><embed src="media/lighttable.mp4" /></p>
+</section>
+<section id="cinc-aka-readeranalyzerjvm" class="level1">
+<h1>CinC (aka reader/analyzer/jvm)</h1>
+<pre class="clojure"><code>(ast/nodes (analyze &#39;[1 (+ 1 2)]))
+({:op        :vector,
+  :top-level true,
+  :items
+  [{:op   :const,
+    :type :number,
+    :val  1,
+    ...}
+   {:op     :static-call,
+    :class  clojure.lang.Numbers,
+    :method add,
+    :form   (. clojure.lang.Numbers (add 1 2)),
+    :args   ...,
+   ...</code></pre>
+</section>
+<section id="om" class="level1">
+<h1>Om</h1>
+<pre class="clojure"><code>(defui Hello
+  Object
+  (render [this]
+    (dom/h1 nil &quot;Hello, world!&quot;)))
+
+(def hello (om/factory Hello))
+
+(.render js/ReactDOM (hello) (gdom/getElement &quot;example&quot;))</code></pre>
+</section>
+<section id="stuart-sierra-component" class="level1">
+<h1>Stuart Sierra Component</h1>
+<pre class="clojure"><code>(defrecord Database [host port connection]
+
+  component/Lifecycle
+
+  (start [component]
+    (println &quot;;; Starting database&quot;)
+    (let [conn (connect-to-database host port)]
+      (assoc component :connection conn)))
+
+  (stop [component]
+    (println &quot;;; Stopping database&quot;)
+    (.close connection)
+    (assoc component :connection nil)))</code></pre>
+</section>
+<section id="core.async-12" class="level1">
+<h1>Core.Async 1/2</h1>
+<ul>
+<li>Beginning of 2013</li>
+<li>Need for non-blocking “await” threads</li>
+<li>Inspired by F#, C# then Scala async/await</li>
+<li>Plus “Channels” from CSP</li>
+<li>Avoid ClojureScript/JS callback hell</li>
+</ul>
+</section>
+<section id="core.async-22" class="level1">
+<h1>Core.Async 2/2</h1>
+<ul>
+<li>Transform blocking calls into state assignment</li>
+<li>Parse Clojure into SSA (Static Single Assignment) form</li>
+<li>Create a state for each await/pause/channel write/read</li>
+<li>Run thread (from pool) with callback into state</li>
+<li>Clojure macrology in action!</li>
+</ul>
+</section>
+<section id="core.async-demo" class="level1">
+<h1>Core.Async Demo</h1>
+<ul>
+<li>Open up REPL</li>
+<li>Open <code>src/coreasync.clj</code></li>
+<li>Follow examples at the bottom.</li>
+<li>Open <code>src/coreasync_workers.clj</code></li>
+<li>More examples at the bottom.</li>
+</ul>
+</section>
+<section id="core.async-resources" class="level1">
+<h1>Core.Async Resources</h1>
+<ul>
+<li><a href="https://github.com/clojure/core.async/blob/b1f18f9d5cc6c2ffd9fecba279086e6115694e16/src/clj/core/async/ioc_macros.clj">Initial version of async/go macro</a></li>
+<li><a href="https://github.com/dotnet/roslyn/blob/master/src/Compilers/CSharp/Portable/Lowering/AsyncRewriter/AsyncRewriter.cs">C Sharp State Machine Writer</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Static_single_assignment_form">What is SSA?</a></li>
+</ul>
+</section>
+<section id="today" class="level1">
+<h1>2014-Today</h1>
+<ul>
+<li><a href="https://github.com/clojure/clojure-clr">ClojureCLR</a> (day 1)</li>
+<li><a href="https://github.com/arcadia-unity/Arcadia/wiki/Using-Arcadia#clojure-clr">Arcadia</a> (2014)</li>
+<li><a href="https://clojure.org/news/2014/08/06/transducers-are-coming">Transducers</a> (2014)</li>
+<li><a href="https://clojure.org/guides/spec">Core.Spec</a> (2016)</li>
+</ul>
+</section>
+<section id="arcadia" class="level1">
+<h1>Arcadia</h1>
+<p><embed src="media/arcadia.mp4" /></p>
+</section>
+<section id="whats-next-imho" class="level1">
+<h1>What’s next? (IMHO)</h1>
+<ul>
+<li>GraalVM</li>
+<li>Formal Verification</li>
+<li>Deep Learning/AI</li>
+<li>SMT solvers</li>
+<li>What’s the killer app?</li>
+</ul>
+</section>
+<section id="fin" class="level1">
+<h1>~ Fin ~</h1>
+<ul>
+<li>Questions?</li>
+<li>Thanks!</li>
+<li><span class="citation" data-cites="reborg">@reborg</span></li>
+</ul>
+</section>
+</div>
+
+<script src="../reveal.js/lib/js/head.min.js"></script>
+<script src="../reveal.js/js/reveal.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: false,
+
+  // available themes are in /css/theme
+      theme: Reveal.getQueryHash().theme || 'beige',
+  
+  // default/cube/page/concave/zoom/linear/fade/none
+      transition: Reveal.getQueryHash().transition || 'linear',
+  
+    dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } }
+      // { src: '../reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+    ]
+  });
+
+</script>
+
+</body>
+</html>
