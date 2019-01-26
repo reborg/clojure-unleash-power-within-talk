@@ -198,8 +198,9 @@ cljs.lang.fnOf = function(f){return (f instanceof Function?f:f.cljs$lang$Fn$invo
         sym (:sym args)]
     (assert (not (namespace sym)) "Can't def ns-qualified name")
     (let [name (:name (resolve-var (dissoc env :locals) sym))
-          init-expr (when (contains? args :init) (disallowing-recur
-                                                  (analyze (assoc env :context :expr) (:init args) sym)))]
+          init-expr (when (contains? args :init)
+                      (disallowing-recur
+                        (analyze (assoc env :context :expr) (:init args) sym)))]
       (merge {:env env :op :def :form form
               :name name :doc (:doc args) :init init-expr}
              (when init-expr {:children [init-expr]})))))
@@ -360,14 +361,15 @@ cljs.lang.fnOf = function(f){return (f instanceof Function?f:f.cljs$lang$Fn$invo
 (.eval jse bootjs)
 (def envx {:ns 'test.ns :context :return :locals '{ethel {:name ethel__123 :init nil}}})
 
-(println (with-out-str (pp/write (analyze envx nil))))
-(println (with-out-str (pp/write (analyze envx 42))))
-(println (with-out-str (pp/write (analyze envx "foo"))))
-(println (with-out-str (pp/write (analyze envx 'fred))))
-(println (with-out-str (pp/write (analyze envx 'fred.x))))
-(println (with-out-str (pp/write (analyze envx 'my.ns/fred))))
-(println (with-out-str (pp/write (analyze envx '(if test then else)))))
-(println (with-out-str (pp/write (analyze (assoc envx :context :statement) '(def test "fortytwo" 42)))))
-(println (with-out-str (pp/write (analyze (assoc envx :context :expr) '(fn* [x y] x y x)))))
-(println (with-out-str (pp/write (analyze (assoc envx :context :statement) '(let* [a 1 b 2] a)))))
+(println
+  (with-out-str
+    (pp/write
+      (analyze
+        (assoc envx :context :statement)
+        '(if test then "fooelse"))))) ;; :183
+
+(emit
+  (analyze
+    (assoc envx :context :statement)
+    '(if test then "fooelse"))) ;; :78
 )

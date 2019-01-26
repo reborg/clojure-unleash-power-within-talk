@@ -51,24 +51,20 @@
 </section>
 
 
+<section id="section" class="level1">
+<h1></h1>
+<p><img src="media/beercaps2016.jpg" /></p>
+</section>
 <section id="about-reborg" class="level1">
 <h1>About <span class="citation" data-cites="reborg">@reborg</span></h1>
 <ul>
 <li>Dev at <a href="http://droit.tech" class="uri">http://droit.tech</a></li>
-<li>We’re hiring! (Please ask)</li>
+<li>Regulations as a service</li>
+<li>It’s mainly a Clojure (and other FP) shop</li>
+<li>We’re hiring! (NYC/London, please ask)</li>
 <li>Organiser of <a href="https://www.meetup.com/Papers-We-Love-London/">Papers We Love London</a></li>
 <li><a href="https://www.youtube.com/channel/UCH0CkLvbv6yEyrUnw9qujpQ">Clojure Pills</a> screencast on YouTube</li>
-<li><a href="http://github.com/reborg/parallel">Parallel lib</a> for Clojure</li>
-</ul>
-</section>
-<section id="oh-and-writing-a-book" class="level1">
-<h1>…oh, and writing a book!</h1>
-<p><img src="../resources/Borgatti-MEAP-small.jpg" /></p>
-<ul>
-<li><a href="www.manning.com/books/clojure-the-essential-reference">Clojure: The Essential Reference</a> by Manning</li>
-<li>800+ pages, 1500+ man/hours, 3 years effort.</li>
-<li><strong>Get 42% discount</strong> with “ssborgatti”!</li>
-<li>Early Access. Writing last chapter.</li>
+<li><a href="http://github.com/reborg/parallel" class="uri">http://github.com/reborg/parallel</a></li>
 </ul>
 </section>
 <section id="we-know-the-basics-already" class="level1">
@@ -85,9 +81,9 @@
 <h1>Reflecting on 11 years of Clojure</h1>
 <ul>
 <li>Innovation, impact, expressiveness…</li>
-<li>What was Clojure able to achieve and why?</li>
+<li>What was Clojure able to achieve?</li>
+<li>When it wasn’t, why not?</li>
 <li>The list is long (and subjective)</li>
-<li>Hang tight! We are going to cover a lot.</li>
 </ul>
 </section>
 <section id="a-word-about-the-examplesdemo" class="level1">
@@ -96,7 +92,7 @@
 <li>I’m mainly searching for the principles</li>
 <li>Code shown could be about initial sketches</li>
 <li>For any serious development go to latest!</li>
-<li>Let’s get started</li>
+<li><strong>Hang tight!</strong> We are going to cover a lot.</li>
 </ul>
 </section>
 <section id="origins." class="level1">
@@ -153,6 +149,7 @@
 <li>Start REPL</li>
 <li>Open <code>src/corelogic.clj</code></li>
 <li>Evaluate snippets on the fly</li>
+<li>Deeper look: <code>src/corelogic_basic.clj</code></li>
 <li>Bonus: <code>src/sudoku.clj</code></li>
 </ul>
 </section>
@@ -164,8 +161,12 @@
 <li><a href="https://github.com/clojure/core.logic/blob/6584ca6323a5e52758ff3d162b93d01050eb9f44/src/logic_fun/fast.clj">Logos Early Sketches</a></li>
 </ul>
 </section>
-<section id="the-fun-begins." class="level1">
-<h1>2011: The fun begins.</h1>
+<section id="section-1" class="level1">
+<h1></h1>
+<p><img src="media/sun-ra-naming-wifis.jpg" /></p>
+</section>
+<section id="let-the-fun-begin" class="level1">
+<h1>2011: Let the fun begin</h1>
 <ul>
 <li><a href="https://groups.google.com/d/msg/clojure/57vhbdeHrqk/tfLyKJIJrHcJ">Midje</a></li>
 <li><a href="https://groups.google.com/d/msg/clojure/G5syTJHhG1I/a7-S6iH8oN4J">Storm</a></li>
@@ -238,7 +239,7 @@
 <h1>ClojureScript Demo</h1>
 <ul>
 <li>Open up REPL</li>
-<li><code>(load-file &quot;src/clojurescript.clj&quot;)</code></li>
+<li>(load-file “src/clojurescript.clj”)</li>
 <li>Follow examples at the bottom.</li>
 </ul>
 </section>
@@ -250,6 +251,10 @@
 <li><a href="https://clojurescript.org">Main Website</a></li>
 <li><a href="https://www.youtube.com/watch?v=tVooR-dF_Ag">ClojureScript Release Presentation</a></li>
 </ul>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<p><img src="media/find-your-language.png" /></p>
 </section>
 <section id="going-enterprise." class="level1">
 <h1>2012: Going enterprise.</h1>
@@ -314,7 +319,12 @@
 <li>Run <code>src/datomic.sh</code> (done)</li>
 <li>Open up browser at http://localhost:9256/browse</li>
 <li>Open <code>src/datomic.clj</code></li>
+<li>And <code>src/datomic_codeq.clj</code></li>
 </ul>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+<p><img src="media/use-of-the-word-exponential-growth.png" /></p>
 </section>
 <section id="annus-mirabilis" class="level1">
 <h1>2013: Annus Mirabilis</h1>
@@ -329,6 +339,9 @@
 <section id="lighttable" class="level1">
 <h1>LightTable</h1>
 <p><embed src="media/lighttable.mp4" /></p>
+<ul>
+<li>Just a sec, making it bigger.</li>
+</ul>
 </section>
 <section id="cinc-aka-readeranalyzerjvm" class="level1">
 <h1>CinC (aka reader/analyzer/jvm)</h1>
@@ -421,17 +434,59 @@
 <li><a href="https://clojure.org/guides/spec">Core.Spec</a> (2016)</li>
 </ul>
 </section>
+<section id="clojureclr" class="level1">
+<h1>ClojureCLR</h1>
+<pre class="clojure"><code>(definterface I1
+  (^Int32 m1 [^Int32 x ^String y])
+  (^Int32 m1 [^String x ^Int32 y])
+  (^Int32 m2 [^Int32 x ^String y]))
+
+(definterface I2
+  (^Int32 m1 [#^Int32 x ^String y])
+  (^String m2 [#^Int32 x ^String y])
+  (m3 [x y]))</code></pre>
+</section>
 <section id="arcadia" class="level1">
 <h1>Arcadia</h1>
 <p><embed src="media/arcadia.mp4" /></p>
+<ul>
+<li>Just a sec, making it bigger.</li>
+</ul>
+</section>
+<section id="transducers" class="level1">
+<h1>Transducers</h1>
+<pre class="clojure"><code>(def x-form
+  (comp
+    (comp (map inc)
+          (comp (filter even?)
+                (mapcat range)))
+    (partition-by #(&lt; (apply + %) 7))
+    (comp (keep-indexed #(when (even? %1) (* %1 %2)))
+          (replace {2 &quot;two&quot; 6 &quot;six&quot; 18 &quot;eighteen&quot;}))
+    (take-while #(not= 300 %))
+    (drop 1)
+    (remove string?)))
+
+(transduce x-form + (vec (interleave (range 18) (range 20))))</code></pre>
+</section>
+<section id="core.spec" class="level1">
+<h1>Core.Spec</h1>
+<pre class="clojure"><code>(def domain
+  (gen/fmap #(keyword &quot;my.domain&quot; %)
+    (gen/such-that #(not= % &quot;&quot;)
+      (gen/string-alphanumeric))))
+
+(gen/sample domain 5)
+;; (:my.domain/O :my.domain/b
+;;   :my.domain/ZH :my.domain/31
+;;   :my.domain/U)</code></pre>
 </section>
 <section id="whats-next-imho" class="level1">
 <h1>What’s next? (IMHO)</h1>
 <ul>
 <li>GraalVM</li>
-<li>Formal Verification</li>
+<li>Formal Verification/STM solvers</li>
 <li>Deep Learning/AI</li>
-<li>SMT solvers</li>
 <li>What’s the killer app?</li>
 </ul>
 </section>
@@ -439,8 +494,18 @@
 <h1>~ Fin ~</h1>
 <ul>
 <li>Questions?</li>
+</ul>
+</section>
+<section id="oh-the-book" class="level1">
+<h1>…oh, the book!</h1>
+<p><img src="../resources/Borgatti-MEAP-small.jpg" /></p>
+<ul>
+<li><a href="www.manning.com/books/clojure-the-essential-reference">Clojure: The Essential Reference</a> by Manning</li>
+<li>800+ pages, 1500+ man/hours, 3 years effort.</li>
+<li>Writing last chapter!</li>
+<li><strong>Get 42% discount</strong> with “ssborgatti”</li>
 <li>Thanks!</li>
-<li><span class="citation" data-cites="reborg">@reborg</span></li>
+<li>Renzo (<span class="citation" data-cites="reborg">@reborg</span>)</li>
 </ul>
 </section>
 </div>

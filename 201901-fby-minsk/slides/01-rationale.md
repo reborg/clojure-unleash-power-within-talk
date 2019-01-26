@@ -9,13 +9,13 @@
 # Reflecting on 11 years of Clojure
 
 * Innovation, impact, expressiveness...
-* What was Clojure able to achieve and why?
+* What was Clojure able to achieve?
+* When it wasn't, why not?
 * The list is long (and subjective)
-* Hang tight! We are going to cover a lot.
 
 # A word about the examples/demo
 
 * I'm mainly searching for the principles
 * Code shown could be about initial sketches
 * For any serious development go to latest!
-* Let's get started
+* **Hang tight!** We are going to cover a lot.

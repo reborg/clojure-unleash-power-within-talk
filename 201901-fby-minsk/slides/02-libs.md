@@ -53,6 +53,7 @@
 * Start REPL
 * Open `src/corelogic.clj`
 * Evaluate snippets on the fly
+* Deeper look: `src/corelogic_basic.clj`
 * Bonus: `src/sudoku.clj`
 
 # Core.Logic Resources
@@ -61,7 +62,11 @@
 * [Core.Logic Tutorial](https://github.com/clojure/core.logic/wiki/A-Core.logic-Primer)
 * [Logos Early Sketches](https://github.com/clojure/core.logic/blob/6584ca6323a5e52758ff3d162b93d01050eb9f44/src/logic_fun/fast.clj)
 
-# 2011: The fun begins.
+#
+
+![](media/sun-ra-naming-wifis.jpg)
+
+# 2011: Let the fun begin
 
 * [Midje](https://groups.google.com/d/msg/clojure/57vhbdeHrqk/tfLyKJIJrHcJ)
 * [Storm](https://groups.google.com/d/msg/clojure/G5syTJHhG1I/a7-S6iH8oN4J)
@@ -134,7 +139,7 @@
 # ClojureScript Demo
 
 * Open up REPL
-* `(load-file "src/clojurescript.clj")`
+* (load-file "src/clojurescript.clj")
 * Follow examples at the bottom.
 
 # ClojureScript Resources
@@ -143,6 +148,10 @@
 * [Initial Implementation](https://github.com/clojure/clojurescript/blob/515900f9762102987bda7d53b919dafc0b6c0580/src/clj/clojure/cljs.clj)
 * [Main Website](https://clojurescript.org)
 * [ClojureScript Release Presentation](https://www.youtube.com/watch?v=tVooR-dF_Ag)
+
+#
+
+![](media/find-your-language.png)
 
 # 2012: Going enterprise.
 
@@ -200,6 +209,11 @@
 * Run `src/datomic.sh` (done)
 * Open up browser at http://localhost:9256/browse
 * Open `src/datomic.clj`
+* And `src/datomic_codeq.clj`
+
+#
+
+![](media/use-of-the-word-exponential-growth.png)
 
 # 2013: Annus Mirabilis
 
@@ -212,6 +226,8 @@
 # LightTable
 
 ![](media/lighttable.mp4)
+
+* Just a sec, making it bigger.
 
 # CinC (aka reader/analyzer/jvm)
 
@@ -300,6 +316,54 @@
 * [Transducers](https://clojure.org/news/2014/08/06/transducers-are-coming) (2014)
 * [Core.Spec](https://clojure.org/guides/spec) (2016)
 
+# ClojureCLR
+
+```clojure
+(definterface I1
+  (^Int32 m1 [^Int32 x ^String y])
+  (^Int32 m1 [^String x ^Int32 y])
+  (^Int32 m2 [^Int32 x ^String y]))
+
+(definterface I2
+  (^Int32 m1 [#^Int32 x ^String y])
+  (^String m2 [#^Int32 x ^String y])
+  (m3 [x y]))
+```
+
 # Arcadia
 
 ![](media/arcadia.mp4)
+
+* Just a sec, making it bigger.
+
+# Transducers
+
+```clojure
+(def x-form
+  (comp
+    (comp (map inc)
+          (comp (filter even?)
+                (mapcat range)))
+    (partition-by #(< (apply + %) 7))
+    (comp (keep-indexed #(when (even? %1) (* %1 %2)))
+          (replace {2 "two" 6 "six" 18 "eighteen"}))
+    (take-while #(not= 300 %))
+    (drop 1)
+    (remove string?)))
+
+(transduce x-form + (vec (interleave (range 18) (range 20))))
+```
+
+# Core.Spec
+
+```clojure
+(def domain
+  (gen/fmap #(keyword "my.domain" %)
+    (gen/such-that #(not= % "")
+      (gen/string-alphanumeric))))
+
+(gen/sample domain 5)
+;; (:my.domain/O :my.domain/b
+;;   :my.domain/ZH :my.domain/31
+;;   :my.domain/U)
+```

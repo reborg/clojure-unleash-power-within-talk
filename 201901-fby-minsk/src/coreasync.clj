@@ -545,7 +545,7 @@
   (require '[notifying-promise :as np])
 
   (def p (ca/async (await (np/future (Thread/sleep 10000) "done"))))
-  (pprint (macroexpand '(ca/async (await (np/future 10)))))
+  (pprint (macroexpand '(ca/async (await (np/future :wait-ten)))))
 
   ;; clean up of macroexpansion.
   (coreasync/task-wrapper
@@ -560,7 +560,7 @@
          (with-bindings (:bindings init)
            (loop [state init]
              (case (:state state)
-               :init (let [task (fn* ([] 10))
+               :init (let [task (fn* ([] :wait-ten))
                            callback (notifying-promise/future-call task)]
                        (recur (assoc state :value callback :state :started)))
                :started (let [inst (:value state)]

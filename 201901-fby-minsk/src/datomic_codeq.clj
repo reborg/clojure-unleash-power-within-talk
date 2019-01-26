@@ -17,6 +17,8 @@
     [(file-commits ?f ?c) (object-nodes ?f ?n) [?c :commit/tree ?n]]
     [(codeq-commits ?cq ?c) [?cq :codeq/file ?f] (file-commits ?f ?c)]])
 
+;; all of the different definitions of the function datomic.codeq.core/commit,
+;; and when they were first defined
 #_(d/q '[:find ?src (min ?date)
        :in $ % ?name
        :where

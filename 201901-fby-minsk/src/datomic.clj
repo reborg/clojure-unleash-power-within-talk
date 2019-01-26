@@ -16,16 +16,3 @@
  :where
  [?commit :commit/author ?author]
  [?author :email/address ?email]]
-
-; [:find ?email (min ?date) (max ?date)
-;  :in $ ?email
-;  :where
-;  [?e :commit/committedAt ?date]
-;  [?e :commit/author ?u]
-;  [?u :email/address ?email]]
-
-; [:find ?e ?msg
-;  :in $ ?text
-;  :where
-;  [(fulltext $ :commit/message ?text) [[?e]]]
-;  [?e :commit/message ?msg]]

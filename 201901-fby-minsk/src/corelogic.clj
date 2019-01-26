@@ -1,6 +1,7 @@
 (ns corelogic
   (:require [clojure.core.logic :as cl]))
 
+;; a,b,c,d,e are encoded "facts"
 (defn some-rules [{:keys [a b c d e]}]
   (and
     (= a 10)
